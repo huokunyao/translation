@@ -37,8 +37,6 @@ import axios from 'axios';
       // },
       // 请求翻译的api post 方法
       getResult(txt,lang) {
-        console.log(this.$route)
-        console.log(this.$store);
         this.sign = this.$md5(this.appid + txt + this.salt + this.key);
         let params = {
           q: txt,
