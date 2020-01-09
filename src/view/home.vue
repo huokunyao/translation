@@ -4,6 +4,7 @@
     <h5>简单 / 易用 / 便捷</h5>
     {{this.$store.state.count}}
     {{this.$store.getters.getStateCount}}
+    {{count1}}
     <el-row>
       <el-button @click="addFun()">+</el-button>
       <el-button @click="reduceFun()">-</el-button>
@@ -16,6 +17,7 @@
 import Translate from './translate';
 import Result from './result';
 import axios from 'axios';
+import { mapState, mapActions,MapGetters } from 'vuex';
 
   export default {
     name: 'home',
@@ -31,6 +33,11 @@ import axios from 'axios';
     components: {
       translate: Translate, // 主要输入内容区域
       result: Result, // 结果区域
+    },
+    computed: {
+      ...mapState({
+        count1: state=>state.count
+      })
     },
     methods: {
       // 请求翻译的api get 方法
