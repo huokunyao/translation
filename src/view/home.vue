@@ -2,6 +2,12 @@
   <div>
     <h1>在线翻译</h1>
     <h5>简单 / 易用 / 便捷</h5>
+    {{this.$store.state.count}}
+    {{this.$store.getters.getStateCount}}
+    <el-row>
+      <el-button @click="addFun()">+</el-button>
+      <el-button @click="reduceFun()">-</el-button>
+    </el-row>
     <translate @translation='getResult' @clear="clear"></translate>
     <result :result='translatedText'></result>
   </div>
@@ -55,6 +61,15 @@ import axios from 'axios';
       clear(value) {
         this.translatedText = value;
         this.$emit('result', this.translatedText)
+      },
+      addFun(){
+        // this.$store.commit('add');
+        let n = 10;
+        this.$store.dispatch('addFun',n);
+      },
+      reduceFun() {
+        // this.$store.commit('reduce');
+        this.$store.dispatch('reduceFun');
       }
     }
   }
