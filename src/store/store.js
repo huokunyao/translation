@@ -1,36 +1,39 @@
 import Vue from 'vue'; //引入vue
 import Vuex from 'vuex'; //引入vuex
+import transModule from './../view/transModule.js';
 
 Vue.use(Vuex);
 
-//创建Vuex实例
-const store = new Vuex.Store({
-    state: {
-        count: 1
+const state = {
+    count: 1
+}
+const mutations = {
+    add(state,n) {
+        state.count += n;
     },
-    //类似vue中的computed
-    getters: {
-        getStateCount(state) {
-            return state.count+1;
-        }
-    },
-    mutations: {
-        add(state,n) { //上面定义的state对象
-            state.count += n;
-        },
-        reduce(state) {
-            state.count -= 3;
-        }
-    },
-    // 注册actions，类似vue里面的methods
-    actions: {
-        addFun(context,n) {
-            context.commit('add',n);
-        },
-        reduceFun(context) {
-            context.commit('reduce');
-        }
+    reduce(state) {
+        state.count -= 8;
     }
+}
+const getters = {
+    getStateCount(state) {
+        return state.count+1;
+    }
+}
+const actions = {
+    addFun(context,n) {
+        context.commit('add',n);
+    },
+    reduceFun(context) {
+        context.commit('reduce');
+    }
+}
+const store = new Vuex.Store({
+    state,
+    getters,
+    mutations,
+    actions,
+    modules: transModule
 })
 
 export default store; // 导出store

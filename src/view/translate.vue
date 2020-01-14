@@ -1,6 +1,6 @@
 <template>
   <div class="hky-translate">
-    <el-input placeholder="请输入需要翻译的内容" v-model="text" clearable @keyup.enter.native="submit"></el-input>
+    <el-input placeholder="请输入需要翻译的内容" v-model="needTransText" clearable @keyup.enter.native="submit"></el-input>
     <el-select v-model="value" placeholder="请选择要翻译的语种">
       <el-option v-for="item in langBean" :key="item.value" :label="item.name" :value="item.value"></el-option>
     </el-select>
@@ -15,7 +15,7 @@
     name: 'translate',
     data() {
       return {
-        text: '', // 需要翻译的文案,
+        needTransText: '', // 需要翻译的文案,
         value:'en', // 被翻译成的语种 默认是英语
         langBean: [ // 可以被翻译的语种
           {value: 'zh', name: '中文'},
@@ -50,7 +50,7 @@
       }
     },
     watch: {
-       text(n,o) {
+       needTransText(n,o) {
         if(!n) {
           this.$emit('clear', n);
         }
@@ -59,11 +59,11 @@
     methods: {
       //提交翻译
       submit(){
-        if(!this.text) {
+        if(!this.needTransText) {
           this.msg.warning('请输入需要翻译的内容');
           return false;
         } else {
-          this.$emit('translation',this.text,this.value);
+          this.$emit('translation',this.needTransText,this.value);
         }
       },
     }

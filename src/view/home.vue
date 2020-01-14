@@ -34,6 +34,9 @@ import { mapState, mapActions,MapGetters } from 'vuex';
       translate: Translate, // 主要输入内容区域
       result: Result, // 结果区域
     },
+    // mounted(){
+    //   console.log(this.$store)
+    // },
     computed: {
       ...mapState({
         count1: state=>state.count
@@ -64,7 +67,7 @@ import { mapState, mapActions,MapGetters } from 'vuex';
           this.$emit('result', this.translatedText)
         })
       },
-      // 输入框内容清楚的时候翻译结果清除
+      // 输入框内容清除的时候翻译结果清除
       clear(value) {
         this.translatedText = value;
         this.$emit('result', this.translatedText)
@@ -72,6 +75,8 @@ import { mapState, mapActions,MapGetters } from 'vuex';
       addFun(){
         // this.$store.commit('add');
         let n = 10;
+        console.log(this.$store);
+        // return false
         this.$store.dispatch('addFun',n);
       },
       reduceFun() {
