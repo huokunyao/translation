@@ -10,6 +10,7 @@ import './style/public.less';
 import md5 from 'js-md5';
 import { Message } from 'element-ui';
 import './sever/httpServer.js';
+import 'echarts';
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);

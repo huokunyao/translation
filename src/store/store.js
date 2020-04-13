@@ -1,6 +1,6 @@
 import Vue from 'vue'; //引入vue
 import Vuex from 'vuex'; //引入vuex
-import transModule from './../view/transModule.js';
+import transModule from '../view/translate/transModule.js';
 
 Vue.use(Vuex);
 

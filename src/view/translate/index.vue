@@ -2,6 +2,8 @@
   <div>
     <h1>在线翻译</h1>
     <h5>简单 / 易用 / 便捷</h5>
+    <translate @translation='getResult' @clear="clear"></translate>
+    <result :result='translatedText'></result>
     {{this.$store.state.count}}
     {{this.$store.getters.getStateCount}}
     {{count1}}
@@ -9,8 +11,8 @@
       <el-button @click="addFun()">+</el-button>
       <el-button @click="reduceFun()">-</el-button>
     </el-row>
-    <translate @translation='getResult' @clear="clear"></translate>
-    <result :result='translatedText'></result>
+    <router-link to="/circle">点击</router-link>
+    <router-view></router-view>
   </div>
 </template>
 <script>
